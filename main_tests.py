@@ -3,6 +3,12 @@
 from  gensim.models import Word2Vec
 import numpy as np
 import example_reader
+import sys
+
+#0 ist wie immer der name des programms.
+#1: ort der aans. 2: ort der google vecs. 3: output file
+argument_list = sys.argv
+
 
 #liste möglicher Faktoren: Projektion, Distanzmetrik
 # Todo: euklidische Distanz gibt immer dasselbe zurück
@@ -96,14 +102,14 @@ def euclidean_dist(vec1,vec2):
     return np.sqrt(float(sum))
 
 #[[attr,adj,noun],[...]...]
-aan_list = example_reader.read_attr_adj_noun('/Users/Fabian/Documents/Uni/6. Semester/Bachelorarbeit/Data/beispiele_ATTR_adj_nomen_short.txt')
+aan_list = example_reader.read_attr_adj_noun(argument_list[1])
 
 print 'Lese Liste von Adj-Noun-Attr'
 print aan_list
 # print u"nächster nachbar"
 
 print "Lade word-embeddings..."
-vector_space = Word2Vec.load_word2vec_format('/Users/Fabian/Documents/Uni/6. Semester/Bachelorarbeit/code/GoogleNews-vectors-negative300.bin', binary=True)
+vector_space = Word2Vec.load_word2vec_format(argument_list[2], binary=True)
 print "fertig geladen"
 
 
@@ -120,7 +126,7 @@ for aan in aan_list:
 
             string = "%s (%s) %s -> %s\nTop N resultate Kosinus-Ähnlichkeit = %s\nTop N resultate Euklid = %s\nAttribut steht nach Kosinus-Ähnlichkeit auf Platz %d und nach Euklid auf Platz %d" % (adj,projection_mode,noun,attr,top_n_results_cs,top_n_results_ed,index_of_attr_cs,index_of_attr_ed)
             print string
-            example_reader.write_to_file('/Users/Fabian/Documents/Uni/6. Semester/Bachelorarbeit/Data/resultate_erste_projektionen.txt',string)
+            example_reader.write_to_file([3],string)
 
         except KeyError as e:
             print "Wort nicht als Word-embedding gefunden!"
