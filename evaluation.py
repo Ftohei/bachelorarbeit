@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 
 HEIPLAS_DEV_SET_PATH = 'data/HeiPLAS-dev.txt'
 HEIPLAS_TEST_SET_PATH = 'data/HeiPLAS-test.txt'
-W2V_BINARY_PATH = '/Users/Fabian/Documents/Uni/6. Semester/Bachelorarbeit/code/GoogleNews-vectors-negative300.bin'
+W2V_BINARY_PATH = 'data/GoogleNews-vectors-negative300.bin'
 
 def test_for_double_entries(list):
     names = [name for name,cossim,isbla in list]

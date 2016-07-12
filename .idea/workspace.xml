@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a276129-284e-4f5d-9589-00e2cb0b3bc0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main_tests.py" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/example_reader.py" afterPath="$PROJECT_DIR$/file_util.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/evaluation.py" afterPath="$PROJECT_DIR$/evaluation.py" />
     </list>
     <ignored path="bachelorarbeit.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,10 +34,10 @@
     <splitter split-orientation="horizontal" split-proportion="0.66397417">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="similarity_ratings_tests.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="similarity_ratings_tests.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/similarity_ratings_tests.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.4245283">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="68" column="31" selection-start-line="68" selection-start-column="31" selection-end-line="68" selection-end-column="31" />
                   <folding>
                     <element signature="e#0#18#0" expanded="true" />
@@ -75,23 +74,23 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="evaluation.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="evaluation.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/evaluation.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+                <state vertical-scroll-proportion="0.4716981">
+                  <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
                   <folding>
                     <element signature="e#0#35#0" expanded="true" />
-                    <element signature="e#626#854#0" expanded="false" />
-                    <element signature="e#917#1408#0" expanded="false" />
-                    <element signature="e#1459#1766#0" expanded="false" />
-                    <element signature="e#1813#2123#0" expanded="false" />
-                    <element signature="e#2168#2339#0" expanded="false" />
-                    <element signature="e#2477#5808#0" expanded="false" />
-                    <element signature="e#11155#12558#0" expanded="false" />
-                    <element signature="e#12657#14491#0" expanded="false" />
-                    <element signature="e#14576#15976#0" expanded="false" />
-                    <element signature="e#16133#18533#0" expanded="false" />
+                    <element signature="e#571#799#0" expanded="false" />
+                    <element signature="e#862#1353#0" expanded="false" />
+                    <element signature="e#1404#1711#0" expanded="false" />
+                    <element signature="e#1758#2068#0" expanded="false" />
+                    <element signature="e#2113#2284#0" expanded="false" />
+                    <element signature="e#2422#5753#0" expanded="false" />
+                    <element signature="e#11100#12503#0" expanded="false" />
+                    <element signature="e#12602#14436#0" expanded="false" />
+                    <element signature="e#14521#15921#0" expanded="false" />
+                    <element signature="e#16078#18478#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -189,8 +188,8 @@
         <option value="$PROJECT_DIR$/subset_experiments.py" />
         <option value="$PROJECT_DIR$/tests.py" />
         <option value="$PROJECT_DIR$/complete_tests.py" />
-        <option value="$PROJECT_DIR$/evaluation.py" />
         <option value="$PROJECT_DIR$/similarity_ratings_tests.py" />
+        <option value="$PROJECT_DIR$/evaluation.py" />
       </list>
     </option>
   </component>
@@ -799,29 +798,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/evaluation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#626#854#0" expanded="false" />
-            <element signature="e#917#1408#0" expanded="false" />
-            <element signature="e#1459#1766#0" expanded="false" />
-            <element signature="e#1813#2123#0" expanded="false" />
-            <element signature="e#2168#2339#0" expanded="false" />
-            <element signature="e#2477#5808#0" expanded="false" />
-            <element signature="e#11155#12558#0" expanded="false" />
-            <element signature="e#12657#14491#0" expanded="false" />
-            <element signature="e#14576#15976#0" expanded="false" />
-            <element signature="e#16133#18533#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/similarity_ratings_tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4245283">
+        <state vertical-scroll-proportion="0.0">
           <caret line="68" column="31" selection-start-line="68" selection-start-column="31" selection-end-line="68" selection-end-column="31" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -829,6 +808,26 @@
             <element signature="e#3462#4339#0" expanded="false" />
             <element signature="e#4454#6088#0" expanded="false" />
             <element signature="e#6216#7812#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4716981">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#571#799#0" expanded="false" />
+            <element signature="e#862#1353#0" expanded="false" />
+            <element signature="e#1404#1711#0" expanded="false" />
+            <element signature="e#1758#2068#0" expanded="false" />
+            <element signature="e#2113#2284#0" expanded="false" />
+            <element signature="e#2422#5753#0" expanded="false" />
+            <element signature="e#11100#12503#0" expanded="false" />
+            <element signature="e#12602#14436#0" expanded="false" />
+            <element signature="e#14521#15921#0" expanded="false" />
+            <element signature="e#16078#18478#0" expanded="false" />
           </folding>
         </state>
       </provider>
