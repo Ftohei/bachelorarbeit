@@ -47,6 +47,7 @@ def perform_complete_test_suite(subset_test_filename, zero_shot_filename, spearm
     elif projection_modes == 'test':
         projection_mode_list = TEST_PROJECTION_MODE_LIST
 
+    check_attribute_set_sizes()
 
     if subset:
 
@@ -56,7 +57,7 @@ def perform_complete_test_suite(subset_test_filename, zero_shot_filename, spearm
 
         sys.stdout = open(result_dir + '/' + subset_test_filename, 'w')
 
-        check_attribute_set_sizes()
+
 
         sys.stdout.flush()
 
@@ -75,7 +76,7 @@ def perform_complete_test_suite(subset_test_filename, zero_shot_filename, spearm
         sys.stdout = open(result_dir + '/' + zero_shot_filename, 'w')
 
         print("\n\n----------------------Subset-Tests (Testmenge explizit ohne die Attribute aus der Trainingsmenge)----------------------".upper())
-        perform_subset_tests(train_subsets=ATTRIBUTE_SETS,
+        perform_subset_tests(train_subsets=[attribute_set for attribute_set in ATTRIBUTE_SETS if attribute_set[0] != 'ALL'],
                              test_subsets=[ALL_ATTRIBUTES],
                              tables=False, quantitive=True,
                              proj_mode_list=projection_mode_list,

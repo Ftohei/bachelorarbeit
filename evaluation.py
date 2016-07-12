@@ -89,14 +89,21 @@ def find_next_neighbours(adj, noun, attr, vectorspace, models, attr_test_set, to
             projected_vec = compute_vector_mean(vectorspace[adj],vectorspace[noun],verbosity=verbosity)
         elif projection_mode == 'max':
             projected_vec = compute_vector_max(vectorspace[adj],vectorspace[noun],verbosity=verbosity)
-        elif projection_mode == 'mitchell_lapata':
+        #ab hier mitchell lapata dilation
+        elif projection_mode == 'mitchell_lapata_0.5':
+            projected_vec = compute_mitchell_lapata(vectorspace[adj], vectorspace[noun], 0.5)
+        elif projection_mode == 'mitchell_lapata_reversed_0.5':
+            projected_vec = compute_mitchell_lapata(vectorspace[noun], vectorspace[adj], 0.5)
+        elif projection_mode == 'mitchell_lapata_1':
+            projected_vec = compute_mitchell_lapata(vectorspace[adj], vectorspace[noun], 1)
+        elif projection_mode == 'mitchell_lapata_reversed_1':
+            projected_vec = compute_mitchell_lapata(vectorspace[noun], vectorspace[adj], 1)
+        elif projection_mode == 'mitchell_lapata_2':
             projected_vec = compute_mitchell_lapata(vectorspace[adj], vectorspace[noun], 2)
-        elif projection_mode == 'mitchell_lapata_reversed':
+        elif projection_mode == 'mitchell_lapata_reversed_2':
             projected_vec = compute_mitchell_lapata(vectorspace[noun], vectorspace[adj], 2)
-        elif projection_mode == 'nn_tensor_product_random':
-            projected_vec = models['nn_tensor_product_random'].predict(np.asarray([[vectorspace[adj], vectorspace[noun]]]))[0, 0]
-        elif projection_mode == 'nn_tensor_product_identity':
-            projected_vec = models['nn_tensor_product_identity'].predict(np.asarray([[vectorspace[adj], vectorspace[noun]]]))[0, 0]
+        elif 'nn_tensor' in projection_mode:
+            projected_vec = models[projection_mode].predict(np.asarray([[vectorspace[adj], vectorspace[noun]]]))[0, 0]
         else:
             projected_vec = models[projection_mode].predict(np.asarray([[vectorspace[adj], vectorspace[noun]]]))[0]
 
@@ -129,9 +136,9 @@ def find_next_neighbours(adj, noun, attr, vectorspace, models, attr_test_set, to
 
     return result_cosine_sim[0:top_n], not_in_embedding_space
 
-def train_models(attr_train_set, vectorspace, proj_mode_list, verbosity = 2):
+def train_models(attr_train_set, vectorspace, proj_mode_list, greyscale_plot_path = 'results/greyscale_plots/', verbosity = 2):
     aan_list_dev, attrs_dev, adjs_dev, nouns_dev = file_util.read_attr_adj_noun(HEIPLAS_DEV_SET_PATH, vectorspace=vectorspace,
-                                                                                verbosity=1)
+                                                                                verbosity=verbosity)
 
     if verbosity >= 2:
         print("Alle AANs aus dev ({}): ".format(len(aan_list_dev)), aan_list_dev)
@@ -158,12 +165,30 @@ def train_models(attr_train_set, vectorspace, proj_mode_list, verbosity = 2):
         models['nn_tensor_product_identity'] = nn_model_tensor_prod_identity
     if 'nn_weighted_adjective_identity' in proj_mode_list:
         nn_model_w_adj_identity = composition_learning.train_model(data, labels, composition_mode='weighted_adj_add_identity', verbosity=verbosity)
+        # print(len())
+        weights = nn_model_w_adj_identity.get_weights()
+        adj_weights = np.shape(np.transpose(np.array([weights])))
+        matr = plt.imshow(np.transpose(np.array([np.diagonal(nn_model_w_adj_identity.get_weights()[0])])), cmap='Greys_r')
+        plt.savefig(greyscale_plot_path + "adj_identity_adj_plot.png")
         models['nn_weighted_adjective_identity'] = nn_model_w_adj_identity
     if 'nn_weighted_noun_identity'  in proj_mode_list:
         nn_model_w_noun_identity = composition_learning.train_model(data, labels, composition_mode='weighted_noun_add_identity', verbosity=verbosity)
         models['nn_weighted_noun_identity'] = nn_model_w_noun_identity
     if 'nn_weighted_adjective_noun_identity'  in proj_mode_list:
         nn_model_w_adj_noun_identity = composition_learning.train_model(data, labels, composition_mode='weighted_adj_and_noun_add_identity', verbosity=verbosity)
+        weights = nn_model_w_adj_noun_identity.get_weights()
+        # adj_weights = np.transpose(np.array([np.diagonal(weights[0][0])]))
+        # noun_weights = np.transpose(np.array([np.diagonal(weights[0][1])]))
+        adj_weights = weights[0][0]
+        noun_weights = weights[0][1]
+
+
+        # matr = plt.imshow(adj_weights, cmap='Greys_r')
+        # plt.savefig(greyscale_plot_path + "adj_noun_identity_adj_plot.png")
+        plt.imsave(greyscale_plot_path + "adj_noun_identity_adj_plot.png", adj_weights, cmap='Greys_r')
+        plt.imsave(greyscale_plot_path + "adj_noun_identity_noun_plot.png",noun_weights, cmap='Greys_r')
+        # matr = plt.imshow(noun_weights, cmap='Greys_r')
+        # plt.savefig(greyscale_plot_path + "adj_noun_identity_noun_plot.png")
         models['nn_weighted_adjective_noun_identity'] = nn_model_w_adj_noun_identity
     if 'nn_weighted_adjective_random'  in proj_mode_list:
         nn_model_w_adj_random = composition_learning.train_model(data, labels, composition_mode='weighted_adj_add_random', verbosity=verbosity)
@@ -192,6 +217,10 @@ def train_models(attr_train_set, vectorspace, proj_mode_list, verbosity = 2):
     if 'nn_weighted_adj_noun_add_sum1_random' in proj_mode_list:
         nn_model_w_adj_noun_identity_with_rands = composition_learning.train_model(data, labels, composition_mode='weighted_adj_noun_add_sum1_random', verbosity=verbosity)
         models['nn_weighted_adj_noun_add_sum1_random'] = nn_model_w_adj_noun_identity_with_rands
+    if 'nn_same_weights_add_identity' in proj_mode_list:
+        nn_model_w_adj_noun_identity_with_rands = composition_learning.train_model(data, labels, composition_mode='same_weights_add_identity', verbosity=verbosity)
+        models['nn_same_weights_add_identity'] = nn_model_w_adj_noun_identity_with_rands
+    quit(9)
     return models
 
 def compute_tables(complete_results, proj_mode_list):
@@ -327,7 +356,7 @@ def evaluate(attr_train_set, attr_test_set, proj_mode_list, tables=False, quanti
 
     sys.stdout.flush()
 
-    aan_list_test, attrs_test, adjs_test, nouns_test = file_util.read_attr_adj_noun(HEIPLAS_TEST_SET_PATH, vectorspace=vectorspace, verbosity=1)
+    aan_list_test, attrs_test, adjs_test, nouns_test = file_util.read_attr_adj_noun(HEIPLAS_TEST_SET_PATH, vectorspace=vectorspace, verbosity=verbosity)
 
     if train_test_exclusivity:
         attr_test_set = [attr for attr in attr_test_set if attr not in attr_train_set]

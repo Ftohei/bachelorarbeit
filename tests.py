@@ -8,6 +8,7 @@ from gensim.models import Word2Vec
 from nltk import word_tokenize
 import sys
 import file_util
+import matplotlib.pyplot as plt
 
 
 import composition_learning
@@ -329,5 +330,8 @@ PRIDE
 
 
 
-sys.stdout = open('testfile.txt', 'w')
-print("test")
+# sys.stdout = open('testfile.txt', 'w')
+# print("test")
+
+matr = plt.imshow(np.random.random((20,1)), cmap='Greys_r')
+plt.savefig("test.png")

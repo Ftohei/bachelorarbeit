@@ -68,6 +68,9 @@ class MagicOperation(Layer):
             initial_weight_value = np.identity(input_dim)
         elif self.composition_mode == 'weighted_adj_noun_add_sum1_random':
             initial_weight_value = np.random.random((input_dim,input_dim))
+        elif self.composition_mode == 'same_weights_add_identity':
+            initial_weight_value = np.identity(input_dim)
+
         self.W = K.variable(initial_weight_value)
         self.trainable_weights = [self.W]
 
@@ -79,7 +82,7 @@ class MagicOperation(Layer):
         attribute = []
 
         if 'tensor_mult' in self.composition_mode:
-            # print("Call mit tensor_mult!")
+            # print("Call mit tensor_mult!")    #todo normalisieren?
             adj_matrix = T.tensordot(adj,self.W,[[1],[2]])
             attribute = T.tensordot(noun,adj_matrix, [[1],[1]])
         elif 'weighted_adj_add' in self.composition_mode:
@@ -94,7 +97,11 @@ class MagicOperation(Layer):
             attribute = weighted_adj + weighted_noun
         elif 'weighted_adj_noun_add_sum1' in self.composition_mode:
             weighted_adj= T.dot(adj, self.W)
-            weighted_noun = T.dot(adj, 1 - self.W)
+            weighted_noun = T.dot(noun, 1 - self.W)
+            attribute = weighted_adj + weighted_noun
+        elif 'same_weights_add_identity' in self.composition_mode:
+            weighted_adj= T.dot(adj, self.W)
+            weighted_noun = T.dot(noun, self.W)
             attribute = weighted_adj + weighted_noun
         return attribute
 

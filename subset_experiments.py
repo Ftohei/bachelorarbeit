@@ -19,7 +19,9 @@ SELECTED_ATTRIBUTES = ('SELECTED', ['QUANTITY','WIDTH','CONSISTENCY','AGE','POSI
 ALL_ATTRIBUTES = ('ALL', ['ABILITY', 'ABSORBENCY', 'ABSTEMIOUSNESS', 'ABSTRACTNESS', 'ACCURACY', 'ACQUISITIVENESS', 'ACTION', 'ACTIVENESS', 'ACTUALITY', 'ADEQUACY', 'ADMISSIBILITY', 'AFFECTEDNESS', 'AGE', 'AIRWORTHINESS', 'ALARM', 'AMBITION', 'ANCESTRY', 'ANIMATENESS', 'ANIMATION', 'APPETIZINGNESS', 'APPROPRIATENESS', 'ASSURANCE', 'ASTRINGENCY', 'ATTENTION', 'ATTENTIVENESS', 'ATTRACTIVENESS', 'ATTRIBUTION', 'AUDIBILITY', 'AUSPICIOUSNESS', 'AWARENESS', 'BEAUTY', 'BEING', 'BENEFICENCE', 'BENIGNITY', 'BOLDNESS', 'BREAKABLENESS', 'CAPABILITY', 'CAREFULNESS', 'CERTAINTY', 'CHANGEABLENESS', 'CHEERFULNESS', 'CIVILITY', 'CLARITY', 'CLEANNESS', 'CLEARNESS', 'COLOUR', 'COMFORT', 'COMMERCE', 'COMMONALITY', 'COMMONNESS', 'COMPLETENESS', 'COMPLEXION', 'COMPLEXITY', 'COMPREHENSIVENESS', 'CONCRETENESS', 'CONFIDENCE', 'CONNECTION', 'CONSISTENCY', 'CONSPICUOUSNESS', 'CONSTANCY', 'CONTINUITY', 'CONVENIENCE', 'CONVENTIONALITY', 'CONVERTIBILITY', 'CORRECTNESS', 'CORRUPTNESS', 'COURAGE', 'COURTESY', 'COWARDICE', 'CREATIVITY', 'CREDIBILITY', 'CRISIS', 'CRITICALITY', 'CUBICITY', 'CURLINESS', 'CURRENTNESS', 'CYCLICITY', 'DEGREE', 'DEHISCENCE', 'DEPTH', 'DESTRUCTIBILITY', 'DIFFERENCE', 'DIFFICULTY', 'DIRECTION', 'DIRECTNESS', 'DISPENSABILITY', 'DISPOSITION', 'DISTANCE', 'DIVERSENESS', 'DOMESTICITY', 'DORMANCY', 'DRAMA', 'DULLNESS', 'DURATION', 'EASE', 'EFFECTIVENESS', 'EFFICACY', 'EMOTIONALITY', 'EQUALITY', 'ESSENTIALITY', 'EVENNESS', 'EVIL', 'EXCITEMENT', 'EXPLICITNESS', 'EXTINCTION', 'FAIRNESS', 'FAMILIARITY', 'FATHERLINESS', 'FEAR', 'FELICITY', 'FERTILITY', 'FIDELITY', 'FINALITY', 'FOREIGNNESS', 'FORMALITY', 'FREEDOM', 'FRESHNESS', 'FRIENDLINESS', 'FULLNESS', 'FUNCTION', 'GENERALITY', 'GENEROSITY', 'GLUTTONY', 'GOOD', 'GREGARIOUSNESS', 'HANDINESS', 'HAPPINESS', 'HARDNESS', 'HEALTH', 'HEIGHT', 'HOLINESS', 'HONESTY', 'HONORABLENESS', 'HUMANENESS', 'HUMANNESS', 'HUMILITY', 'IMMEDIACY', 'IMPORTANCE', 'INDEPENDENCE', 'INDIVIDUALITY', 'INTEGRITY', 'INTELLIGENCE', 'INTENTIONALITY', 'INTEREST', 'INTROSPECTIVENESS', 'INTROVERSION', 'INTRUSIVENESS', 'INWARDNESS', 'KINDNESS', 'LAWFULNESS', 'LEGALITY', 'LENGTH', 'LIGHT', 'LIKELIHOOD', 'LIKENESS', 'LITERACY', 'LIVELINESS', 'LOGICALITY', 'LOYALTY', 'LUMINOSITY', 'MAGNETISM', 'MAGNITUDE', 'MAJORITY', 'MALEFICENCE', 'MALIGNITY', 'MANDATE', 'MATERIALITY', 'MATURITY', 'MEASURE', 'MIND', 'MINDFULNESS', 'MINORITY', 'MODERATION', 'MODERNITY', 'MODESTY', 'MORALITY', 'MOTHERLINESS', 'MOTION', 'MUSICALITY', 'NASTINESS', 'NATURALNESS', 'NATURE', 'NECESSITY', 'NICENESS', 'NOBILITY', 'NORMALITY', 'NUMERACY', 'NUMEROUSNESS', 'OBEDIENCE', 'OBVIOUSNESS', 'OFFENSIVENESS', 'OPACITY', 'ORDINARINESS', 'ORIGINALITY', 'ORTHODOXY', 'OTHERNESS', 'OUTWARDNESS', 'PASSIVITY', 'PERFECTION', 'PERMANENCE', 'PERMISSIVENESS', 'PIETY', 'PITCH', 'PLAYFULNESS', 'PLEASANTNESS', 'POLITENESS', 'POPULARITY', 'POSITION', 'POSSIBILITY', 'POTENCY', 'POTENTIAL', 'POWER', 'PRACTICALITY', 'PRESENCE', 'PRICE', 'PRIDE', 'PROLIXITY', 'PROPRIETY', 'PURITY', 'QUALITY', 'QUANTITY', 'READINESS', 'REALITY', 'REASONABLENESS', 'REASSURANCE', 'RECOGNITION', 'REGULARITY', 'REPULSION', 'REPUTE', 'RESPONSIBILITY', 'RIGHTNESS', 'SAMENESS', 'SARCASM', 'SEAWORTHINESS', 'SENIORITY', 'SENSATIONALISM', 'SENSITIVITY', 'SENTIENCE', 'SEPARATION', 'SERIOUSNESS', 'SEX', 'SHAPE', 'SHARPNESS', 'SIGNIFICANCE', 'SIMILARITY', 'SINCERITY', 'SIZE', 'SMELL', 'SOCIABILITY', 'SOCIALITY', 'SOLIDITY', 'SPEED', 'STALENESS', 'STATURE', 'STATUS', 'STRENGTH', 'SUBSTANTIALITY', 'SUCCESS', 'SUFFICIENCY', 'SUSCEPTIBILITY', 'TAMENESS', 'TASTE', 'TEMPERATURE', 'TEXTURE', 'THICKNESS', 'THOUGHTFULNESS', 'TIMIDITY', 'TIMING', 'TRACTABILITY', 'TRUTH', 'TYPICALITY', 'ULTIMACY', 'UNFAMILIARITY', 'USUALNESS', 'UTILITY', 'VALENCE', 'VIRGINITY', 'VIRTUE', 'VOLUME', 'WARINESS', 'WEIGHT', 'WETNESS', 'WIDTH', 'WILDNESS', 'WORTHINESS'])
 
 PROJECTION_MODE_LIST = ['adj','noun','add','mult','sub_a-n','sub_n-a','avg','max',
-                        'mitchell_lapata', 'mitchell_lapata_reversed',
+                        'mitchell_lapata_0.5', 'mitchell_lapata_reversed_0.5',
+                        'mitchell_lapata_1', 'mitchell_lapata_reversed_1',
+                        'mitchell_lapata_2', 'mitchell_lapata_reversed_2',
                         'nn_tensor_product_random','nn_tensor_product_identity',
                         'nn_weighted_adjective_identity','nn_weighted_noun_identity',
                         'nn_weighted_adjective_noun_identity','nn_weighted_adjective_random',
@@ -27,6 +29,7 @@ PROJECTION_MODE_LIST = ['adj','noun','add','mult','sub_a-n','sub_n-a','avg','max
                         'nn_weighted_adjective_ones', 'nn_weighted_noun_ones','nn_weighted_adjective_noun_ones',
                         'nn_weighted_adj_and_noun_add_identity_with_rands',
                         'nn_weighted_adj_noun_add_sum1_identity','nn_weighted_adj_noun_add_sum1_random',
+                        'nn_same_weights_add_identity',
 
                         ]
 
@@ -36,6 +39,7 @@ MEDIUM_PROJECTION_LIST = ['adj','noun','add','mult','sub_a-n','sub_n-a','avg','m
                         'nn_weighted_adjective_identity','nn_weighted_noun_identity',
                         'nn_weighted_adjective_noun_identity',
                         'nn_weighted_adj_noun_add_sum1_identity','nn_weighted_adj_noun_add_sum1_random',
+                        'nn_same_weights_add_identity',
                         ]
 
 SMALL_PROJECTION_MODE_LSIT = ['add','mult','sub_a-n','sub_n-a','avg','max','mitchell_lapata',
@@ -43,8 +47,7 @@ SMALL_PROJECTION_MODE_LSIT = ['add','mult','sub_a-n','sub_n-a','avg','max','mitc
                         'nn_weighted_adjective_noun_identity',
                         'nn_weighted_adj_and_noun_add_identity_with_rands']
 
-TEST_PROJECTION_MODE_LIST = ['adj','noun','mitchell_lapata_reversed',
-                             'nn_weighted_adj_noun_add_sum1_identity','nn_weighted_adj_noun_add_sum1_random',]
+TEST_PROJECTION_MODE_LIST = ['nn_weighted_adjective_noun_identity',]
 
 
 REALLY_SMALL_PROJ_LIST = ['add','avg','max','nn_weighted_adjective_noun_identity','nn_weighted_adj_and_noun_add_identity_with_rands']
