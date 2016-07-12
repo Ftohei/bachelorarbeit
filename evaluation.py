@@ -167,9 +167,9 @@ def train_models(attr_train_set, vectorspace, proj_mode_list, greyscale_plot_pat
         nn_model_w_adj_identity = composition_learning.train_model(data, labels, composition_mode='weighted_adj_add_identity', verbosity=verbosity)
         # print(len())
         weights = nn_model_w_adj_identity.get_weights()
-        adj_weights = np.shape(np.transpose(np.array([weights])))
-        matr = plt.imshow(np.transpose(np.array([np.diagonal(nn_model_w_adj_identity.get_weights()[0])])), cmap='Greys_r')
-        plt.savefig(greyscale_plot_path + "adj_identity_adj_plot.png")
+        # matr = plt.imshow(np.transpose(np.array([np.diagonal(nn_model_w_adj_identity.get_weights()[0])])), cmap='Greys_r')
+        # plt.savefig(greyscale_plot_path + "adj_identity_adj_plot.png")
+        plt.imsave(greyscale_plot_path + "adj_identity_adj_plot.png", weights, cmap='Greys_r')
         models['nn_weighted_adjective_identity'] = nn_model_w_adj_identity
     if 'nn_weighted_noun_identity'  in proj_mode_list:
         nn_model_w_noun_identity = composition_learning.train_model(data, labels, composition_mode='weighted_noun_add_identity', verbosity=verbosity)
@@ -220,7 +220,6 @@ def train_models(attr_train_set, vectorspace, proj_mode_list, greyscale_plot_pat
     if 'nn_same_weights_add_identity' in proj_mode_list:
         nn_model_w_adj_noun_identity_with_rands = composition_learning.train_model(data, labels, composition_mode='same_weights_add_identity', verbosity=verbosity)
         models['nn_same_weights_add_identity'] = nn_model_w_adj_noun_identity_with_rands
-    quit(9)
     return models
 
 def compute_tables(complete_results, proj_mode_list):
