@@ -41,6 +41,7 @@ def compute_similarities(ratings, vector_space, models, proj_mode ='add', verbos
             else:
                 phrasevec_1 = models[proj_mode].predict(np.asarray([[vector_space[adj1], vector_space[noun1]]]))[0]
         except KeyError:
+            print(proj_mode)
             print("%s oder %s nicht im vektorspace enthalten" % (adj1, noun1))
             success = False
 

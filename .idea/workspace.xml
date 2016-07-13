@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a276129-284e-4f5d-9589-00e2cb0b3bc0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/complete_tests.py" afterPath="$PROJECT_DIR$/complete_tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/similarity_ratings_tests.py" afterPath="$PROJECT_DIR$/similarity_ratings_tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/subset_experiments.py" afterPath="$PROJECT_DIR$/subset_experiments.py" />
     </list>
     <ignored path="bachelorarbeit.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -16,7 +18,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/bachelorarbeit$subset_experiments.coverage" NAME="subset_experiments Coverage Results" MODIFIED="1468224963916" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/bachelorarbeit$subset_experiments.coverage" NAME="subset_experiments Coverage Results" MODIFIED="1468423513633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/bachelorarbeit$similarity_ratings_tests.coverage" NAME="similarity_ratings_tests Coverage Results" MODIFIED="1465204786978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/bachelorarbeit$theano_tests.coverage" NAME="theano_tests Coverage Results" MODIFIED="1463139704149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/bachelorarbeit$tests.coverage" NAME="tests Coverage Results" MODIFIED="1468335140669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -31,101 +33,121 @@
     <favorites_list name="bachelorarbeit" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="similarity_ratings_tests.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/similarity_ratings_tests.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.67375886">
-              <caret line="54" column="92" selection-start-line="54" selection-start-column="92" selection-end-line="54" selection-end-column="92" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#3798#4675#0" expanded="false" />
-                <element signature="e#4790#6424#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="complete_tests.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/complete_tests.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="103" column="133" selection-start-line="103" selection-start-column="133" selection-end-line="103" selection-end-column="133" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="evaluation.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/evaluation.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="310" column="5" selection-start-line="310" selection-start-column="5" selection-end-line="310" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-                <element signature="e#575#803#0" expanded="false" />
-                <element signature="e#866#1357#0" expanded="false" />
-                <element signature="e#1408#1715#0" expanded="false" />
-                <element signature="e#1762#2072#0" expanded="false" />
-                <element signature="e#2117#2288#0" expanded="false" />
-                <element signature="e#2426#6189#0" expanded="false" />
-                <element signature="e#12938#14341#0" expanded="false" />
-                <element signature="e#14440#16274#0" expanded="false" />
-                <element signature="e#17916#20324#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="composition_learning.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/composition_learning.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="195" column="30" selection-start-line="195" selection-start-column="4" selection-end-line="195" selection-end-column="30" />
-              <folding>
-                <element signature="e#5714#7767#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="subset_results.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/results/2016_7_12/subset_results.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="336" column="23" selection-start-line="336" selection-start-column="23" selection-end-line="336" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="subset_experiments.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/subset_experiments.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding>
-                <element signature="e#25#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5726979">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="similarity_ratings_tests.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/similarity_ratings_tests.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.37878788">
+                  <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#18#0" expanded="true" />
+                    <element signature="e#3275#3760#0" expanded="false" />
+                    <element signature="e#3829#4706#0" expanded="false" />
+                    <element signature="e#4821#6455#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="evaluation.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/evaluation.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="66" column="4" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="4" />
+                  <folding>
+                    <element signature="e#0#35#0" expanded="true" />
+                    <element signature="e#575#803#0" expanded="false" />
+                    <element signature="e#866#1357#0" expanded="false" />
+                    <element signature="e#1408#1715#0" expanded="false" />
+                    <element signature="e#1762#2072#0" expanded="false" />
+                    <element signature="e#2117#2288#0" expanded="false" />
+                    <element signature="e#12938#14341#0" expanded="false" />
+                    <element signature="e#14440#16274#0" expanded="false" />
+                    <element signature="e#17916#20324#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="composition_learning.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/composition_learning.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="195" column="30" selection-start-line="195" selection-start-column="4" selection-end-line="195" selection-end-column="30" />
+                  <folding>
+                    <element signature="e#5714#7767#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="subset_results.txt" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/results/2016_7_12/subset_results.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/tests.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="336" column="23" selection-start-line="336" selection-start-column="23" selection-end-line="336" selection-end-column="23" />
+                  <folding>
+                    <element signature="e#0#18#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="subset_experiments.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/subset_experiments.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="21" column="72" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="72" />
+                  <folding>
+                    <element signature="e#25#35#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="subset_experiments.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/subset_experiments.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="21" column="42" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="42" />
+                  <folding>
+                    <element signature="e#25#35#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="complete_tests.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/complete_tests.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.5673759">
+                  <caret line="103" column="113" selection-start-line="103" selection-start-column="113" selection-end-line="103" selection-end-column="113" />
+                  <folding>
+                    <element signature="e#0#38#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -216,7 +238,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Problems" />
         <subPane subId="Project Files">
@@ -232,6 +253,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -282,7 +304,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="2016_7_12" />
+              <option name="myItemId" value="2016_7_13" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -296,7 +318,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
+              <option name="myItemId" value="results" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -315,7 +337,7 @@
       <recent name="$PROJECT_DIR$/test_results" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.tests">
+  <component name="RunManager" selected="Python.subset_experiments">
     <configuration default="false" name="main_tests" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -608,8 +630,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.tests" />
-        <item index="1" class="java.lang.String" itemvalue="Python.subset_experiments" />
+        <item index="0" class="java.lang.String" itemvalue="Python.subset_experiments" />
+        <item index="1" class="java.lang.String" itemvalue="Python.tests" />
         <item index="2" class="java.lang.String" itemvalue="Python.similarity_ratings_tests" />
         <item index="3" class="java.lang.String" itemvalue="Python.simExperiment" />
         <item index="4" class="java.lang.String" itemvalue="Python.main_tests" />
@@ -640,26 +662,26 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18497577" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18497577" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34948605" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2554645" sideWeight="0.503231" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3452055" sideWeight="0.49676898" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31771597" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24832214" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3396779" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3396779" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3989071" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3178082" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3989071" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -689,11 +711,91 @@
     <entry file="file://$PROJECT_DIR$/similarity_ratings_tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#3275#3760#0" expanded="false" />
+            <element signature="e#3829#4706#0" expanded="false" />
+            <element signature="e#4821#6455#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/complete_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="103" column="133" selection-start-line="103" selection-start-column="133" selection-end-line="103" selection-end-column="133" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="310" column="5" selection-start-line="310" selection-start-column="5" selection-end-line="310" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#575#803#0" expanded="false" />
+            <element signature="e#866#1357#0" expanded="false" />
+            <element signature="e#1408#1715#0" expanded="false" />
+            <element signature="e#1762#2072#0" expanded="false" />
+            <element signature="e#2117#2288#0" expanded="false" />
+            <element signature="e#12938#14341#0" expanded="false" />
+            <element signature="e#14440#16274#0" expanded="false" />
+            <element signature="e#17916#20324#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composition_learning.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="195" column="30" selection-start-line="195" selection-start-column="4" selection-end-line="195" selection-end-column="30" />
+          <folding>
+            <element signature="e#5714#7767#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results/2016_7_12/subset_results.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="336" column="23" selection-start-line="336" selection-start-column="23" selection-end-line="336" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/subset_experiments.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#25#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/similarity_ratings_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#3798#4675#0" expanded="false" />
-            <element signature="e#4790#6424#0" expanded="false" />
+            <element signature="e#3275#3760#0" expanded="false" />
+            <element signature="e#3829#4706#0" expanded="false" />
+            <element signature="e#4821#6455#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -719,7 +821,6 @@
             <element signature="e#1408#1715#0" expanded="false" />
             <element signature="e#1762#2072#0" expanded="false" />
             <element signature="e#2117#2288#0" expanded="false" />
-            <element signature="e#2426#6189#0" expanded="false" />
             <element signature="e#12938#14341#0" expanded="false" />
             <element signature="e#14440#16274#0" expanded="false" />
             <element signature="e#17916#20324#0" expanded="false" />
@@ -878,16 +979,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/composition_learning.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="195" column="30" selection-start-line="195" selection-start-column="4" selection-end-line="195" selection-end-column="30" />
-          <folding>
-            <element signature="e#5714#7767#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/results/greyscale_plots/adj_identity_adj_plot.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -914,7 +1005,7 @@
     <entry file="file://$PROJECT_DIR$/evaluation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="310" column="5" selection-start-line="310" selection-start-column="5" selection-end-line="310" selection-end-column="5" />
+          <caret line="66" column="4" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="4" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
             <element signature="e#575#803#0" expanded="false" />
@@ -922,7 +1013,6 @@
             <element signature="e#1408#1715#0" expanded="false" />
             <element signature="e#1762#2072#0" expanded="false" />
             <element signature="e#2117#2288#0" expanded="false" />
-            <element signature="e#2426#6189#0" expanded="false" />
             <element signature="e#12938#14341#0" expanded="false" />
             <element signature="e#14440#16274#0" expanded="false" />
             <element signature="e#17916#20324#0" expanded="false" />
@@ -933,31 +1023,50 @@
     <entry file="file://$PROJECT_DIR$/subset_experiments.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <caret line="21" column="72" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="72" />
           <folding>
             <element signature="e#25#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/complete_tests.py">
+    <entry file="file://$PROJECT_DIR$/composition_learning.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="103" column="133" selection-start-line="103" selection-start-column="133" selection-end-line="103" selection-end-column="133" />
+          <caret line="195" column="30" selection-start-line="195" selection-start-column="4" selection-end-line="195" selection-end-column="30" />
+          <folding>
+            <element signature="e#5714#7767#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/complete_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5673759">
+          <caret line="103" column="113" selection-start-line="103" selection-start-column="113" selection-end-line="103" selection-end-column="113" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/results/2016_7_13/spearman_results.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/similarity_ratings_tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67375886">
-          <caret line="54" column="92" selection-start-line="54" selection-start-column="92" selection-end-line="54" selection-end-column="92" />
+        <state vertical-scroll-proportion="0.37878788">
+          <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#3798#4675#0" expanded="false" />
-            <element signature="e#4790#6424#0" expanded="false" />
+            <element signature="e#3275#3760#0" expanded="false" />
+            <element signature="e#3829#4706#0" expanded="false" />
+            <element signature="e#4821#6455#0" expanded="false" />
           </folding>
         </state>
       </provider>
