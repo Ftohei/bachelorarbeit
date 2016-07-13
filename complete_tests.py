@@ -101,7 +101,7 @@ def perform_complete_test_suite(subset_test_filename, zero_shot_filename, spearm
         for attribute_set in ATTRIBUTE_SETS:
             print("\n---------------------Teste mit Attribut-Menge {}----------------".format(attribute_set[0]))
             similarity_experiment(attribute_set,attribute_set,
-                                  ['add','nn_weighted_adjective_noun_identity','mult','mitchell_lapata'], rating_cutoff_list=[4,5,6],
+                                  ['add','nn_weighted_adjective_noun_identity','mult','mitchell_lapata'], rating_cutoff_list=[0,1,2,3,4,5,6],
                                   tables=False,
                                   verbosity=verbosity)
 

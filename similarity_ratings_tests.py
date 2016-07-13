@@ -6,8 +6,6 @@ import composition_learning
 from evaluation import *
 from subset_experiments import *
 
-#TODO: mit rating cutoff jeweils angeben, wie viele Datenpunkte noch übrig bleiben
-
 
 def compute_similarities(ratings, vector_space, models, proj_mode ='add', verbosity=0):
     #num_ratings gibt an, wie viele Ratings es insgesamt
@@ -151,7 +149,6 @@ def source_of_similarity_quantitative_eval(ratings, attr_test_set, vectorspace, 
         if top_n_results1[0][0] == top_n_results2[0][0]:
             prec_at_1_counter += 1
 
-        #TODO: FRAGE! für die prec@5 nur gucken, ob überhaupt gleiche attr sind oder auch wie viele?
         shared_results = [attr for attr,cosine,boolean in top_n_results1 if attr in [attr2 for attr2,cosine2,boolean2 in top_n_results2]]
         # if shared_results:
         #     prec_at_5_counter+=1

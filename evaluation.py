@@ -2,7 +2,7 @@ from  gensim.models import Word2Vec
 import numpy as np
 import scipy.spatial.distance as scp
 import file_util
-import sys
+import sys, os
 import composition_learning
 import matplotlib.pyplot as plt
 
@@ -165,31 +165,27 @@ def train_models(attr_train_set, vectorspace, proj_mode_list, greyscale_plot_pat
         models['nn_tensor_product_identity'] = nn_model_tensor_prod_identity
     if 'nn_weighted_adjective_identity' in proj_mode_list:
         nn_model_w_adj_identity = composition_learning.train_model(data, labels, composition_mode='weighted_adj_add_identity', verbosity=verbosity)
-        # print(len())
-        weights = nn_model_w_adj_identity.get_weights()
-        # matr = plt.imshow(np.transpose(np.array([np.diagonal(nn_model_w_adj_identity.get_weights()[0])])), cmap='Greys_r')
-        # plt.savefig(greyscale_plot_path + "adj_identity_adj_plot.png")
-        plt.imsave(greyscale_plot_path + "adj_identity_adj_plot.png", weights, cmap='Greys_r')
         models['nn_weighted_adjective_identity'] = nn_model_w_adj_identity
+
+        if not "adj_identity_adj_plot.png" in os.listdir(greyscale_plot_path):
+            weights = nn_model_w_adj_identity.get_weights()[0]
+            plt.imsave(greyscale_plot_path + "adj_identity_adj_plot.png", weights, cmap='Greys_r')
+
     if 'nn_weighted_noun_identity'  in proj_mode_list:
         nn_model_w_noun_identity = composition_learning.train_model(data, labels, composition_mode='weighted_noun_add_identity', verbosity=verbosity)
         models['nn_weighted_noun_identity'] = nn_model_w_noun_identity
     if 'nn_weighted_adjective_noun_identity'  in proj_mode_list:
         nn_model_w_adj_noun_identity = composition_learning.train_model(data, labels, composition_mode='weighted_adj_and_noun_add_identity', verbosity=verbosity)
         weights = nn_model_w_adj_noun_identity.get_weights()
-        # adj_weights = np.transpose(np.array([np.diagonal(weights[0][0])]))
-        # noun_weights = np.transpose(np.array([np.diagonal(weights[0][1])]))
-        adj_weights = weights[0][0]
-        noun_weights = weights[0][1]
-
-
-        # matr = plt.imshow(adj_weights, cmap='Greys_r')
-        # plt.savefig(greyscale_plot_path + "adj_noun_identity_adj_plot.png")
-        plt.imsave(greyscale_plot_path + "adj_noun_identity_adj_plot.png", adj_weights, cmap='Greys_r')
-        plt.imsave(greyscale_plot_path + "adj_noun_identity_noun_plot.png",noun_weights, cmap='Greys_r')
-        # matr = plt.imshow(noun_weights, cmap='Greys_r')
-        # plt.savefig(greyscale_plot_path + "adj_noun_identity_noun_plot.png")
         models['nn_weighted_adjective_noun_identity'] = nn_model_w_adj_noun_identity
+
+        if not "adj_noun_identity_adj_plot.png" in os.listdir(greyscale_plot_path):
+            adj_weights = weights[0][0]
+            plt.imsave(greyscale_plot_path + "adj_noun_identity_adj_plot.png", adj_weights, cmap='Greys_r')
+        if not "adj_noun_identity_noun_plot.png" in os.listdir(greyscale_plot_path):
+            noun_weights = weights[0][1]
+            plt.imsave(greyscale_plot_path + "adj_noun_identity_noun_plot.png",noun_weights, cmap='Greys_r')
+
     if 'nn_weighted_adjective_random'  in proj_mode_list:
         nn_model_w_adj_random = composition_learning.train_model(data, labels, composition_mode='weighted_adj_add_random', verbosity=verbosity)
         models['nn_weighted_adjective_random'] = nn_model_w_adj_random
@@ -220,6 +216,11 @@ def train_models(attr_train_set, vectorspace, proj_mode_list, greyscale_plot_pat
     if 'nn_same_weights_add_identity' in proj_mode_list:
         nn_model_w_adj_noun_identity_with_rands = composition_learning.train_model(data, labels, composition_mode='same_weights_add_identity', verbosity=verbosity)
         models['nn_same_weights_add_identity'] = nn_model_w_adj_noun_identity_with_rands
+
+        if not "sum1_identity_adj_plot.png" in os.listdir(greyscale_plot_path):
+            weights = nn_model_w_adj_noun_identity_with_rands.get_weights()[0]
+            plt.imsave(greyscale_plot_path + "sum1_identity_adj_plot.png", weights, cmap='Greys_r')
+
     return models
 
 def compute_tables(complete_results, proj_mode_list):
