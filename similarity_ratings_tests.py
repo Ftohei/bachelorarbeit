@@ -49,7 +49,7 @@ def compute_similarities(ratings, vector_space, models, proj_mode ='add', verbos
                 phrasevec_2 = vector_space[adj2] + vector_space[noun2]
             elif proj_mode == 'mult':
                 phrasevec_2 = np.multiply(vector_space[adj2], vector_space[noun2])
-            elif proj_mode == 'mitchell_lapata':
+            elif proj_mode == 'mitchell_lapata_2':
                 phrasevec_2 = compute_mitchell_lapata(vector_space[adj2], vector_space[noun2], michtell_lapata_dilation_factor, verbosity=verbosity)
             elif proj_mode == 'mitchell_lapata_reversed_2':
                 phrasevec_2 = compute_mitchell_lapata(vector_space[noun2], vector_space[adj2], michtell_lapata_dilation_factor, verbosity=verbosity)
