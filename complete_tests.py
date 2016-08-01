@@ -80,7 +80,7 @@ def perform_complete_test_suite(subset_test_filename, zero_shot_filename, spearm
                              test_subsets=[ALL_ATTRIBUTES],
                              tables=False, quantitive=True,
                              proj_mode_list=projection_mode_list,
-                             train_test_exclusivity=False,
+                             train_test_exclusivity=True,
                              verbosity=verbosity)
 
         sys.stdout.flush()

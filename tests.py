@@ -12,10 +12,10 @@ import matplotlib.pyplot as plt
 
 
 import composition_learning
+from subset_experiments import *
 
 
-
-test2= """
+all= """
 INTROSPECTIVENESS
 PROLIXITY
 CRITICALITY
@@ -298,8 +298,83 @@ CREDIBILITY
 CRISIS
 INTEREST
 PRIDE
-
 """
+
+
+
+# print(len(word_tokenize(test2)))
+
+dict = {}
+
+
+for name, attr_set in [ALL_ATTRIBUTES,CORE_ATTRIBUTES,SELECTED_ATTRIBUTES,MEASUREABLE_ATTRIBUTES,PROPERTY_ATTRIBUTES,WEBCHILD_ATTRIBUTES]:
+    dict[name] = {}
+    for name2, attr_set2 in [ALL_ATTRIBUTES,CORE_ATTRIBUTES,SELECTED_ATTRIBUTES,MEASUREABLE_ATTRIBUTES,PROPERTY_ATTRIBUTES,WEBCHILD_ATTRIBUTES]:
+        dict[name][name2] = len([attr for attr in attr_set if attr in attr_set2 or attr.lower() in ['color','colour']])
+        # dict[name][1][name2] = [attr for attr in attr_set if attr not in attr_set2]
+        # print([attr for attr in attr_set if attr not in attr_set2])
+    # print(name, dict[name][0],"\n\t",dict[name][1])
+
+
+reihenfolge = ['ALL','CORE','SELECTED','MEASUREABLE','PROPERTY','WEBCHILD']
+
+def pptable(dict):
+    tex_string = """\\begin{table}\n\\begin{tabular}{rcccccc}\n\\hline\n"""
+
+    #header
+    for i in range(0,len(reihenfolge) - 1):
+        tex_string += reihenfolge[i] + " & "
+    tex_string += reihenfolge[5] + "\\\\\n"
+
+
+
+    for i in range(0,len(reihenfolge)):
+        tex_string += reihenfolge[i] + " & "
+        for j in range(0,len(reihenfolge) - 1):
+            tex_string += str(dict[reihenfolge[i]][reihenfolge[j]]) + " & "
+        tex_string += str(dict[reihenfolge[i]][reihenfolge[5]]) + "\\\\\n"
+
+    tex_string += "\\end{tabular}\n\\end{table}"
+
+    print(tex_string)
+
+# pptable(dict)
+
+
+name, attr_set = ALL_ATTRIBUTES
+name2, attr_set2 = WEBCHILD_ATTRIBUTES
+print(len(attr_set2))
+print(len([attr for attr in attr_set2 if attr not in attr_set]))
+
+
+
+#
+# for key in list(dict):
+#     tex_string += key + "&"
+#     for key2 in list(dict[key]):
+#         tex_string += key
+#
+#
+
+
+
+
+#     \begin{tabular}{rlc}
+# 	\hline
+# & Addition & Similarity\\
+# \hline
+# 1 & \textbf{age} & 0.25\\
+# 2 & potential & 0.21\\
+# 3 & success & 0.20\\
+# 4 & excitement & 0.19\\
+# 5 & maturity & 0.19\\
+# 6 & ease & 0.19\\
+# 7 & possibility & 0.18\\
+# 8 & good & 0.16\\
+# 9 & size & 0.16\\
+# 10 & reality & 0.15\\
+# \end{tabular}
+
 
 
 
@@ -333,5 +408,5 @@ PRIDE
 # sys.stdout = open('testfile.txt', 'w')
 # print("test")
 
-matr = plt.imshow(np.random.random((20,1)), cmap='Greys_r')
-plt.savefig("test.png")
+# matr = plt.imshow(np.random.random((20,1)), cmap='Greys_r')
+# plt.savefig("test.png")

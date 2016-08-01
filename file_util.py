@@ -55,7 +55,9 @@ def read_sim_ratings(filename, vectorspace=False, verbosity = 0):
         for line in f:
             line_list = line.split()
             if line_list[1] == 'adjectivenouns':
-                if vectorspace:
+                if not vectorspace:
+                    result.append(line_list[3:])
+                else:
                     try:
                         adj1 = vectorspace[line_list[3]]
                         noun1 = vectorspace[line_list[4]]
@@ -64,10 +66,8 @@ def read_sim_ratings(filename, vectorspace=False, verbosity = 0):
                         result.append(line_list[3:])
                     except KeyError:
                         not_in_vec_space.append(line_list[3:])
-                else:
-                    result.append(line_list[3:])
     if verbosity >= 1:
-        print("Es wurden {} Adj-Noun Phrasen-Paare eingelesen. {} enthielten Wörter, die nicht im Embedding-Space enthalten waren".format(len(result),len(not_in_vec_space)))
+        print("Es wurden {} Adj-Noun Phrasen-Paare eingelesen. {} enthielten Wörter, die nicht im Embedding-Space enthalten waren\nResultat: {}".format(len(result),len(not_in_vec_space),result))
     return result
 
 
