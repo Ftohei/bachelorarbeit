@@ -8,10 +8,16 @@ from subset_experiments import *
 
 
 def compute_similarities(ratings, vector_space, models, proj_mode ='add', verbosity=0):
-    #num_ratings gibt an, wie viele Ratings es insgesamt
-    #models ist ein dict mit den entsprechenden trainierten modellen
-    #proj_mode ist nötig für die modellauswahl
-    #insgesamt berechnet die Funktion alle Kosinus-Ähnlichkeiten für alle Datenbeispiele aus dem Mitchell_lapata-Datensatz von Matthias
+    """
+    Copmutes similarities for phrase pairs.
+    :param ratings: phrase pairs with human ratings.
+    :param vector_space: pre-trained word embeddings.
+    :param models: a list containing trained neural models.
+    :param proj_mode: specifies a certain projection mode.
+    :param verbosity:
+    :return:
+    """
+
     result = []
     num_ratings = np.shape(ratings)[0]
 
@@ -29,7 +35,6 @@ def compute_similarities(ratings, vector_space, models, proj_mode ='add', verbos
         michtell_lapata_dilation_factor = 2
 
         try:
-            #TODO weitere projektionsmethoden testen?
             if proj_mode == 'add':
                 phrasevec_1 = vector_space[adj1] + vector_space[noun1]
             elif proj_mode == 'mult':
@@ -72,6 +77,7 @@ def compute_similarities(ratings, vector_space, models, proj_mode ='add', verbos
 SIMILARITY_RATINGS_PATH = "data/mitchell-lapata-sim-ratings.txt"
 
 def fetch_similarity_ratings(path, ordered = False, vectorspace=False, verbosity = 0):
+    """Reads phrase pairs and similarity ratings from a file and returns them in descending order by human ratings"""
     sim_ratings = file_util.read_sim_ratings(path, vectorspace=vectorspace, verbosity=verbosity)
     if ordered:
         ordered_ratings = []
@@ -85,6 +91,7 @@ def fetch_similarity_ratings(path, ordered = False, vectorspace=False, verbosity
     return np.asarray(sim_ratings)
 
 def spearman_evaluation(similarity_tuple_list, verbosity = 2):
+    """Computes spearman's r between human ratings and different projection modes."""
     print("-------------Similarity-Ratings: Spearman's r-------------")
     longest_name = np.max([len(mode) for mode,ratings in similarity_tuple_list])
 
@@ -102,6 +109,7 @@ def spearman_evaluation(similarity_tuple_list, verbosity = 2):
                     print("{:<{}}{:<15.3f}{:<15.6f}".format(mode + ' vs ' + mode2,longest_name + longest_name + 10,corr,p))
 
 def source_of_similarity_eval(ratings, attr_test_set, vectorspace, models, proj_mode, top_n=5, verbosity=2):
+    """Prints tables containing the top attributes for given phrase pairs. Used for evaluation of attributes as the source of similarity"""
     ratings = ratings[:,:2]
     for (adj1,noun1), (adj2,noun2) in ratings.tolist():
 
@@ -134,10 +142,10 @@ def source_of_similarity_eval(ratings, attr_test_set, vectorspace, models, proj_
             print("{:<25}{:>5.2f}{:^7}{:<25}{:>5.2f}".format(test_attr1, cosine1,':',test_attr2,cosine2))
 
 def source_of_similarity_quantitative_eval(ratings, attr_test_set, vectorspace, models, proj_mode, top_n=5, verbosity=2):
+    """Computes quantitative evaluation metrics for the evaluation of attributes as the source of similarity"""
     ratings = ratings[:,:2]
     phrase_pair_counter = 0
     prec_at_1_counter = 0
-    # prec_at_5_counter = 0
     source_of_sim_metric = 0
 
     for (adj1,noun1), (adj2,noun2) in ratings.tolist():
@@ -155,24 +163,18 @@ def source_of_similarity_quantitative_eval(ratings, attr_test_set, vectorspace, 
             prec_at_1_counter += 1
 
         shared_results = [attr for attr,cosine,boolean in top_n_results1 if attr in [attr2 for attr2,cosine2,boolean2 in top_n_results2]]
-        # if shared_results:
-        #     prec_at_5_counter+=1
-        #
+
         source_of_sim_metric += len(shared_results) / top_n
 
     prec_at_1 = prec_at_1_counter / phrase_pair_counter
-    # prec_at_5 = prec_at_5_counter / phrase_pair_counter
+
     source_of_sim_metric /= phrase_pair_counter
 
     print("{:<45}{:<10.2f}{:<10.2f}".format(proj_mode,prec_at_1,source_of_sim_metric))
 
 
 def similarity_experiment(attr_train_set, attr_test_set, proj_mode_list, spearman = True, tables = True, quantitative = True, rating_cutoff_list = [4,5], verbosity = 1):
-
-    # print("Starte Similarity-Experimente...")
-    # sys.stdout.flush()
-    # quit()
-
+    """Performs similarity experiments for a given attribute training set, a given attribute test set and a list of projection modes"""
     if verbosity >= 1:
         print("lade word2vec-model...")
         print("Nutze train-set: {}".format(attr_train_set))
@@ -213,6 +215,3 @@ def similarity_experiment(attr_train_set, attr_test_set, proj_mode_list, spearma
                 for proj_mode in proj_mode_list:
                     print("---------------------------------{}-----------------------------".format(proj_mode.upper()))
                     source_of_similarity_eval(ratings, attr_test_set=attr_test_set[1], vectorspace=vector_space, models=models, proj_mode=proj_mode, verbosity=0)
-
-
-

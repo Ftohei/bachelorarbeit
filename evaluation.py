@@ -18,7 +18,8 @@ HEIPLAS_TEST_SET_PATH = 'data/HeiPLAS-test.txt'
 W2V_BINARY_PATH = 'data/GoogleNews-vectors-negative300.bin'
 
 def test_for_double_entries(list):
-    names = [name for name,cossim,isbla in list]
+    """Searches for double entries in a list"""
+    names = [name for name,cossim,temp in list]
     counts = [(elem,names.count(elem)) for elem in names]
     result = []
     for i in counts:
@@ -27,7 +28,7 @@ def test_for_double_entries(list):
     return result
 
 def compute_mitchell_lapata(u,v, factor, verbosity = 0):
-    #implementiert  p = (u * u) * v + (factor - 1) * (u * v) * u (Mitchell Lapata 2010)
+    """Implements p = (u * u) * v + (factor - 1) * (u * v) * u (Mitchell Lapata 2010)"""
     if verbosity >= 2: print("Shapes von u und v in compute_mitchell_lapata: {} und {}\tFactor = {}".format(np.shape(u),np.shape(v),factor))
     dot_uu = np.dot(u,u)
     dot_uv = np.dot(u,v)
@@ -36,6 +37,7 @@ def compute_mitchell_lapata(u,v, factor, verbosity = 0):
     return result
 
 def compute_vector_mean(a,b, verbosity = 2):
+    """Computes a vector mean"""
     if verbosity >= 2 and np.shape(a) != np.shape(b):
         print("Ungleiche Dimensionen bei Mittelwertbildung!")
         return np.zeros(np.shape(a))
@@ -46,6 +48,7 @@ def compute_vector_mean(a,b, verbosity = 2):
         return result
 
 def compute_vector_max(a,b,verbosity=2):
+    """Computes a vector max"""
     if verbosity >= 2 and np.shape(a) != np.shape(b):
         print("Ungleiche Dimensionen bei Maxwertbildung!")
         return np.zeros(np.shape(a))
@@ -56,6 +59,7 @@ def compute_vector_max(a,b,verbosity=2):
         return result
 
 def cos_sim(vec1,vec2, verbosity = 0):
+    """Computs cosine similarity between two vectors"""
     if not (np.shape(vec1) == np.shape(vec2)):
         print("Ungleiche Dims bei Cos Sim!")
     else:
@@ -65,6 +69,21 @@ def cos_sim(vec1,vec2, verbosity = 0):
 
 
 def find_next_neighbours(adj, noun, attr, vectorspace, models, attr_test_set, top_n = 10, projection_mode = 'add', verbosity = 2):
+    """
+    Finds the top_n next attributes in attr_test_set for a given adjective and noun.
+    :param adj: Adjective.
+    :param noun: Noun.
+    :param attr: Target Attribute.
+    :param vectorspace: Pre-trained word embeddings.
+    :param models: list of trained neural models.
+    :param attr_test_set: a list of attributes to use for next-neighbour evaluation.
+    :param top_n: Number of attributes to return
+    :param projection_mode: which projection mode to use.
+    :param verbosity:
+    :return: list with the top_n attributes and a list with the words that are not contained in
+    embedding space.
+    """
+
     #suche für die adj-nomen-phrase mit einem bestimmten Projektions-Modus
     # die top_n nächsten Attribute aus einem attr_test_set
     result_cosine_sim = []
@@ -137,6 +156,15 @@ def find_next_neighbours(adj, noun, attr, vectorspace, models, attr_test_set, to
     return result_cosine_sim[0:top_n], not_in_embedding_space
 
 def train_models(attr_train_set, vectorspace, proj_mode_list, greyscale_plot_path = 'results/greyscale_plots/', verbosity = 2):
+    """
+    Trains neural models using the compositional_learning module.
+    :param attr_train_set: Which attributes are to be used for training?
+    :param vectorspace: Pre-trained word embeddings.
+    :param proj_mode_list: Which projection modes are to be used?
+    :param greyscale_plot_path: where to save possible greyscale matrix plots
+    :param verbosity:
+    :return: a list containing trained models.
+    """
     aan_list_dev, attrs_dev, adjs_dev, nouns_dev = file_util.read_attr_adj_noun(HEIPLAS_DEV_SET_PATH, vectorspace=vectorspace,
                                                                                 verbosity=verbosity)
 
@@ -224,6 +252,7 @@ def train_models(attr_train_set, vectorspace, proj_mode_list, greyscale_plot_pat
     return models
 
 def compute_tables(complete_results, proj_mode_list):
+    """Prints tables with top 10 attributes for test examples for all projection modes."""
     head_line = ""
     for proj_mode in proj_mode_list:
         head_line += "{:<40}".format(proj_mode.upper())
@@ -250,7 +279,14 @@ def compute_tables(complete_results, proj_mode_list):
             print(string)       # printe fertige Zeile
 
 def compute_quantitive_eval(complete_results, proj_mode_list, verbosity = 2, sort_list = 2):
-    #sort_list = 1 ist sortierung nach prec@1, = 2 nach prec@5, = 0 keine umsortierung
+    """
+    Computes precision at 1 and precision at 5 using provided results.
+    :param complete_results:
+    :param proj_mode_list:
+    :param verbosity:
+    :param sort_list:
+    :return:
+    """
 
     max_len_proj_mode = np.max([len(string) for string in proj_mode_list])
 
@@ -307,47 +343,19 @@ def compute_quantitive_eval(complete_results, proj_mode_list, verbosity = 2, sor
         )
         print(proj_mode_string)
 
-def plot_hist(complete_results, proj_mode_list, verbosity = 2, sort_list = 2):
-    #TODO print beautiful plots of results
-    counters = {}   #dict mit projection_mode:[insgesamt,prec@1,prec@5]
-
-    for proj_mode in proj_mode_list:
-        counters[proj_mode] = [0,0,0]
-
-    for adj,noun,attr,results_for_aan in complete_results:
-        for proj_mode, results_for_proj_mode in results_for_aan:
-            counters[proj_mode][0] += 1
-
-            if results_for_proj_mode:
-                attr,cos_similarity,is_searched_attr = results_for_proj_mode[0]
-                if is_searched_attr:
-                    counters[proj_mode][1] += 1
-
-                in_top_5 = False
-                for attr,cos_similarity,is_searched_attr in results_for_proj_mode[0:5]:
-                    if is_searched_attr:
-                        in_top_5 = True
-
-                if in_top_5:
-                    counters[proj_mode][2] += 1
-            else:
-                if verbosity >= 2:
-                    print("Keine Resultate für {},{} -> {}".format(adj,noun,attr))
-
-    prec_at_1_list = []
-    prec_at_5_list = []
-    labels = list(counters)
-    for proj_mode in labels:
-        prec_at_1_list.append(counters[proj_mode][1])
-        prec_at_5_list.append(counters[proj_mode][2])
-
-    plt.hist(prec_at_1_list, facecolor='green', alpha=0.5)
-    plt.hist(prec_at_5_list, facecolor='blue', alpha=0.5)
-    plt.xticks(prec_at_1_list, labels, rotation='vertical')
-    plt.margins(0.2)
-    plt.show()
-
 def evaluate(attr_train_set, attr_test_set, proj_mode_list, tables=False, quantitive_eval=True, plot=True, train_test_exclusivity=False, verbosity=2):
+    """
+    Performs tests for given sets of training and testing attributes, a list of projection modes.
+    :param attr_train_set: a set of attributes for training.
+    :param attr_test_set: a set of attributes for testing.
+    :param proj_mode_list: a list of projection modes.
+    :param tables: print tables or not.
+    :param quantitive_eval: print quantitative evaluation or not.
+    :param plot: plots or not (not yet included)
+    :param train_test_exclusivity: zero-shot or normal setting.
+    :param verbosity:
+    :return: null
+    """
     if verbosity >= 1:
         print("Lade word-embeddings...")
     vectorspace = Word2Vec.load_word2vec_format(W2V_BINARY_PATH, binary=True)
@@ -402,4 +410,4 @@ def evaluate(attr_train_set, attr_test_set, proj_mode_list, tables=False, quanti
     if tables:
         compute_tables(complete_results, proj_mode_list)
     if plot:
-        plot_hist(complete_results, proj_mode_list)
+        pass

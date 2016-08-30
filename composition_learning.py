@@ -12,33 +12,40 @@ from theano import function
 import sys
 import file_util
 
-
-def tensor_illuminator(x, input):
-    #das ist naturlich quatsch. hat auch wieder keine echten werte, sondern ist nur ein Tensor!
-    return x.shape.eval(input)
-
-
+#Used for the neural architecture, learning algorithm and preprocessing of data.
 
 class MagicOperation(Layer):
+    """Defines a layer that is used to train weights for attribute selection"""
+
     def __init__(self, output_dim, composition_mode = 'tensor_mult', **kwargs):
+        """
+        Initialization of the layer.
+        :param output_dim: the number of output neurons (for BA: same as input dimension).
+        :param composition_mode: the specific composition mode that is to be used for training.
+        :param kwargs:
+        :return: null
+        """
         self.output_dim = output_dim
         self.composition_mode = composition_mode
-        # self.composition_mode = composition_mode
         super(MagicOperation, self).__init__(**kwargs)
 
     def build(self, input_shape):
-        # print input_shape
+        """
+        Initializes the weights and adds them to the trainable weights.
+        The initialization depends on the specific composition_mode used.
+        :param input_shape:
+        :return:
+        """
+
         input_dim = input_shape[2]
         initial_weight_value = 0
         if self.composition_mode == 'tensor_mult_random':
             initial_weight_value = np.random.random((input_dim, input_dim, input_dim))
-            # print("Shape von initial weight values bei tensor_mult_random: {}".format(np.shape(initial_weight_value)))
         elif self.composition_mode == 'tensor_mult_identity':
             arr = []
             for i in range(0,input_dim):
                 arr.append(np.identity(input_dim))
             initial_weight_value = np.array(arr)
-            # print("Shape von initial weight values bei tensor_mult_identity: {}".format(np.shape(initial_weight_value)))
         elif self.composition_mode == 'weighted_adj_add_identity':
             initial_weight_value = np.identity(input_dim)
         elif self.composition_mode == 'weighted_noun_add_identity':
@@ -75,8 +82,15 @@ class MagicOperation(Layer):
         self.trainable_weights = [self.W]
 
     def call(self, x, mask=None):
+        """
+        Defines the specific compositional function used for attribute selection.
+        The data input x is divided into an adjective and a noun input.
+        :param x: Input consisting of all adjective and noun inputs for all possible training examples
+        :param mask:
+        :return: attribute vector.
+        """
 
-        adj = x[:,0,:] #sind schon tensoren, wegen der Input-schicht davor!
+        adj = x[:,0,:]
         noun = x[:,1,:]
 
         attribute = []
@@ -84,7 +98,7 @@ class MagicOperation(Layer):
         if 'tensor_mult' in self.composition_mode:
             # print("Call mit tensor_mult!")    #todo normalisieren?
             adj_matrix = T.tensordot(adj,self.W,[[1],[2]])
-            attribute = T.tensordot(noun,adj_matrix, [[1],[1]])
+            attribute = T.tensordot(noun,adj_matrix, [[1],[1]])     #anmerkung für später: hier einfach auch noch über 0-te achse summieren, macht das arbeiten mit dem modell nachher leichter
         elif 'weighted_adj_add' in self.composition_mode:
             weighted_adj = T.dot(adj, self.W)
             attribute = weighted_adj + noun
@@ -106,14 +120,18 @@ class MagicOperation(Layer):
         return attribute
 
     def get_output_shape_for(self, input_shape):
-        # print input_shape
         return (input_shape[0], self.output_dim)
 
-############AB HIER Trainingsprozess##############
-
-   #konstruiere datenmatrix für training
-
 def construct_data_and_labels(aan_list, vector_space, attr_train_set, verbosity = 2):
+    """
+    Constructs data matrix for training.
+    :param aan_list: a list of attribute-adjective-noun triples.
+    :param vector_space: pre-trained word embeddings.
+    :param attr_train_set: a list of attribute that are used during training. Triples containing
+    attributes that are not contained in this list are not considered for training.
+    :param verbosity:
+    :return:
+    """
     #falls attr_train_set nicht leer, werden nur vektoren aus attribute subset genutzt
     if verbosity >= 2:
         print("Trainset in construct data: {}".format(attr_train_set))
@@ -176,6 +194,14 @@ def construct_data_and_labels(aan_list, vector_space, attr_train_set, verbosity 
 
 
 def train_model(data, labels, composition_mode, verbosity=2):
+    """
+    Trains a model that uses certain data, labels and a compositional function.
+    :param data: input data
+    :param labels: input labels
+    :param composition_mode:
+    :param verbosity:
+    :return:
+    """
     if verbosity >= 1:
         print("Trainiere NN mit mode %s..." % composition_mode)
 
@@ -194,6 +220,7 @@ def train_model(data, labels, composition_mode, verbosity=2):
 
 
 def min_mean_max_weight_matrix(weights):
+    """Computes mean min and max for weight matrices."""
     W = weights[0]
 
     W_adj = W[0].tolist()

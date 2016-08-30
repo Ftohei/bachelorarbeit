@@ -3,11 +3,6 @@
 import sys
 from evaluation import evaluate
 
-#NEXT: -Durchläufe mit allen Projektionsmodi machen und schauen wie es aussieht
-#Tabellen für alles Berechnen lassen?
-#Funktion schreiben, die die Scores mit Matplotlib plottet
-#bei den Similarity Tests jeweils die besten Attribute ausgeben lassen
-
 CORE_ATTRIBUTES = ('CORE', ['AGE', 'COLOR', 'DIRECTION', 'DURATION', 'SIZE', 'SMELL', 'SPEED', 'TASTE', 'TEMPERATURE', 'WEIGHT'])
 MEASUREABLE_ATTRIBUTES = ('MEASUREABLE', ['ABSORBENCY', 'AGE', 'AIRWORTHINESS', 'AUDIBILITY', 'CLARITY', 'CLEANNESS', 'CLEARNESS', 'COLOUR', 'COMPLEXION', 'COMPLEXITY', 'CONSISTENCY', 'CONSTANCY', 'DEHISCENCE', 'DEPTH', 'DIFFERENCE', 'DIRECTION', 'DISTANCE', 'DURATION', 'EFFECTIVENESS', 'EFFICACY', 'EQUALITY', 'FERTILITY', 'FRESHNESS', 'HARDNESS', 'HEALTH', 'HEIGHT', 'INTELLIGENCE', 'LENGTH', 'LIGHT', 'LIKELIHOOD', 'LOGICALITY', 'LUMINOSITY', 'MAGNETISM', 'MATURITY', 'MOTION', 'NUMEROUSNESS', 'OPACITY', 'PITCH', 'POSITION', 'PRICE', 'PURITY', 'QUALITY', 'QUANTITY', 'REPULSION', 'SEAWORTHINESS', 'SENTIENCE', 'SEX', 'SHAPE', 'SHARPNESS', 'SIGNIFICANCE', 'SIMILARITY', 'SIZE', 'SMELL', 'SOCIABILITY', 'SOLIDITY', 'SPEED', 'STRENGTH', 'TASTE', 'TEMPERATURE', 'TEXTURE', 'THICKNESS', 'TYPICALITY', 'VALENCE', 'VOLUME', 'WEIGHT', 'WETNESS', 'WIDTH'])
 PROPERTY_ATTRIBUTES = ('PROPERTY', ['ABSORBENCY', 'ABSTEMIOUSNESS', 'ACQUISITIVENESS', 'AGE', 'ANCESTRY', 'ANIMATENESS', 'ANIMATION', 'APPETIZINGNESS', 'ATTENTION', 'AUDIBILITY', 'BOLDNESS', 'BREAKABLENESS', 'COLOR', 'COMPLEXION', 'CONSISTENCY', 'CONTINUITY', 'CUBICITY', 'CURLINESS', 'CURRENTNESS', 'DEGREE', 'DEPTH', 'DESTRUCTIBILITY', 'DISPOSITION', 'DISTANCE', 'DULLNESS', 'DURATION', 'FAIRNESS', 'FRESHNESS', 'FULLNESS', 'HARDNESS', 'HEIGHT', 'IMMEDIACY', 'LENGTH', 'LIGHT', 'LUMINOSITY', 'MAGNITUDE', 'MAJORITY', 'MINORITY', 'MODERATION', 'MODERNITY', 'MUSICALITY', 'NUMEROUSNESS', 'OBVIOUSNESS', 'PERMANENCE', 'PITCH', 'POSITION', 'POWER', 'QUALITY', 'QUANTITY', 'REASONABLENESS', 'REGULARITY', 'SENIORITY', 'SENSITIVITY', 'SENTIENCE', 'SERIOUSNESS', 'SEX', 'SHAPE', 'SHARPNESS', 'SIZE', 'SMELL', 'SOLIDITY', 'SPEED', 'STALENESS', 'STATURE', 'STRENGTH', 'TEMPERATURE', 'TEXTURE', 'THICKNESS', 'TIMING', 'VOLUME', 'WEIGHT', 'WIDTH', 'WILDNESS'])
@@ -53,7 +48,18 @@ REALLY_SMALL_PROJ_LIST = ['add','avg','max','nn_weighted_adjective_noun_identity
 ATTRIBUTE_SETS = [ALL_ATTRIBUTES,CORE_ATTRIBUTES,SELECTED_ATTRIBUTES,MEASUREABLE_ATTRIBUTES,PROPERTY_ATTRIBUTES,WEBCHILD_ATTRIBUTES]
 
 def perform_subset_tests(train_subsets, test_subsets, tables=False, quantitive=True, plot=False, proj_mode_list=PROJECTION_MODE_LIST, train_test_exclusivity = False, verbosity = 2):
-
+    """
+    Performs attribute selection experiments for given parameters.
+    :param train_subsets: attribute subsets to use for training.
+    :param test_subsets: attribute subsets to use for testing.
+    :param tables: print tables or not?
+    :param quantitive: print quantitative evaluation or not?
+    :param plot: print plots or not? (not yet included)
+    :param proj_mode_list: a list of projection modes.
+    :param train_test_exclusivity: zero-shot or normal setting.
+    :param verbosity:
+    :return:
+    """
     if train_test_exclusivity:
         for train_set in train_subsets:
             for test_set in test_subsets:
@@ -61,7 +67,6 @@ def perform_subset_tests(train_subsets, test_subsets, tables=False, quantitive=T
                     print("-----------------------")
                     output = "Train: {}, Test: {} \\ {}".format(train_set[0], test_set[0], train_set[0])
                     print(output)
-                    evaluate(train_set[1],test_set[1], proj_mode_list, tables=tables, plot=plot, quantitive_eval=quantitive,train_test_exclusivity = train_test_exclusivity, verbosity=verbosity)
                     sys.stdout.flush()
 
     else:
@@ -74,6 +79,18 @@ def perform_subset_tests(train_subsets, test_subsets, tables=False, quantitive=T
                 sys.stdout.flush()
 
 def perform_test(train_set,test_set, tables=False, quantitive=True, plot=False, proj_mode_list=PROJECTION_MODE_LIST, train_test_exclusivity = False, verbosity = 2):
+    """
+    Performs attribute experiment for given parameters.
+    :param train_set: Attribute set for training.
+    :param test_set: Attribute set for testing.
+    :param tables: print tables or not?
+    :param quantitive: print quantitative evaluation or not?
+    :param plot: print plots or not? (not yet included)
+    :param proj_mode_list: a list of projection modes.
+    :param train_test_exclusivity: zero-shot or normal setting.
+    :param verbosity:
+    :return:
+    """
     print("-----------------------")
     output = "Train: %s, Test: %s" % (train_set[0], test_set[0])
     print(output)
@@ -81,23 +98,10 @@ def perform_test(train_set,test_set, tables=False, quantitive=True, plot=False, 
     sys.stdout.flush()
 
 def check_attribute_set_sizes(attribute_list = ATTRIBUTE_SETS):
+    """
+    Prints sizes of attribute sets.
+    :param attribute_list:
+    :return:
+    """
     for attribute_set in attribute_list:
         print("{}: {}".format(attribute_set[0],len(attribute_set[1])))
-
-# check_attribute_set_sizes()
-
-# perform_subset_tests(train_subsets=ATTRIBUTE_SETS,
-#                      test_subsets=ATTRIBUTE_SETS,
-#                      tables=False, quantitive=True,
-#                      proj_mode_list=SMALL_PROJECTION_MODE_LSIT,
-#                      train_test_exclusivity=False,
-#                      verbosity=0)
-
-
-
-# perform_subset_tests(subsets=[ALL_ATTRIBUTES,CORE_ATTRIBUTES,MEASUREABLE_ATTRIBUTES,PROPERTY_ATTRIBUTES,WEBCHILD_ATTRIBUTES],
-#                      tables=False, quantitive=True, verbosity=0)
-
-# perform_test(ALL_ATTRIBUTES,ALL_ATTRIBUTES, tables=False, quantitive=False, plot=True, proj_mode_list=REALLY_SMALL_PROJ_LIST, verbosity=0)
-
-# perform_test(ALL_ATTRIBUTES,ALL_ATTRIBUTES, tables=False, quantitive=True, proj_mode_list=SMALL_PROJECTION_MODE_LSIT, verbosity=0)

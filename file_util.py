@@ -2,8 +2,15 @@ from nltk import word_tokenize
 import codecs
 from  gensim.models import Word2Vec
 
-
 def read_attr_adj_noun(filename,encoding='utf-8', vectorspace=False, verbosity = 0):
+    """
+    Read attribute-adjective-noun triples from the HeiPLAS files.
+    :param filename:
+    :param encoding:
+    :param vectorspace:
+    :param verbosity:
+    :return:
+    """
     result = []
     adjs = []
     nouns = []
@@ -49,6 +56,7 @@ def read_attr_adj_noun(filename,encoding='utf-8', vectorspace=False, verbosity =
 TEST_FILE_PATH = "/Users/Fabian/Documents/Uni/6. Semester/Bachelorarbeit/Data/mitchell-lapata-sim-ratings.txt"
 
 def read_sim_ratings(filename, vectorspace=False, verbosity = 0):
+    """Reads phrase pairs and similarity ratings from the dataset of mitchell and lapata (2010)."""
     result = []
     with codecs.open(filename, encoding='utf-8') as f:
         not_in_vec_space = []
@@ -70,10 +78,8 @@ def read_sim_ratings(filename, vectorspace=False, verbosity = 0):
         print("Es wurden {} Adj-Noun Phrasen-Paare eingelesen. {} enthielten Wörter, die nicht im Embedding-Space enthalten waren\nResultat: {}".format(len(result),len(not_in_vec_space),result))
     return result
 
-
-
-
 def write_to_file(filename,string,encoding='utf-8'):
+    """Writes string to certain file"""
     with codecs.open(filename,'a+',encoding='utf-8') as f:
         try:
             f.writelines(string + "\n")
