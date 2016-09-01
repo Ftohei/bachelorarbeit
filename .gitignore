@@ -20,7 +20,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -98,3 +99,5 @@ fabric.properties
 
 
 data/GoogleNews-vectors-negative300.bin
+.__pycache__
+.DS_Store
