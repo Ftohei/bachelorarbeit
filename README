@@ -1,0 +1,6 @@
+This project was used for computing results for the bachelor's thesis of Fabian Kaupmann.
+
+To carry out computations, you need to add pre-trained word embeddings to the data folder.
+For the bachelor's thesis, we used the word embeddings from Google:
+
+https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit
